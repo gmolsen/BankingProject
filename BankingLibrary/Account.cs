@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Banking {
+namespace MaxTechnicalTraining {
 	/// <summary>
 	///  The account class simulates an account at a bank.
 	/// </summary>
-	class Account {
-		//Properties
+	public class Account {
+		//Properties 
 		/// <summary>
 		///  Contains the value of the next instance account number
 		/// </summary>
@@ -62,11 +62,11 @@ namespace Banking {
 			}
 		}
 		/// <summary>
-		/// 
+		/// Transfers money from one account to the other
 		/// </summary>
-		/// <param name="amount"></param>
-		/// <param name="ToAccount"></param>
-		/// <returns></returns>
+		/// <param name="amount">Amount of money to transfer</param>
+		/// <param name="ToAccount">Account to transfer money to</param>
+		/// <returns>Returns true if deposit is accepted, returns false </returns>
 		public bool Transfer(double amount, Account ToAccount) {
 			if (Withdraw(amount)) { //calls instance
 				ToAccount.Deposit(amount);
@@ -75,6 +75,10 @@ namespace Banking {
 				return false; // homework, withdraw succeeds and deposit fails
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public double CheckBalance() {
 				return Balance;
 		}
