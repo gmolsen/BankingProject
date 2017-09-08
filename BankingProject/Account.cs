@@ -18,6 +18,7 @@ namespace Banking {
 				return true;
 			}
 		}
+		 
 
 		public void Deposit(double amount) {
 			if (IsAmountInvalid(amount) == true) {
