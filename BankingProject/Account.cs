@@ -20,17 +20,34 @@ namespace Banking {
 				return true;
 			}
 		}
-		public void Deposit(double amount) {
+		public bool Deposit(double amount) {
 			if (IsAmountInvalid(amount) == true) {
 				Console.WriteLine("The amount must be greater than zero.");
-				return;
+				return false;
 			}
 			Balance += amount;
+			return true;
+
 		}
-		public void Withdraw (double amount) {
+		public bool Withdraw (double amount) {
 			if (IsAmountInvalid(amount) == true) {
 				Console.WriteLine("The amount must be greater than zero.");
-				return;
+				return false;
+			}
+			if (amount > CheckBalance()) {
+				Console.WriteLine("Insufficient funds.");
+				return false;
+			} else {
+				Balance -= amount;
+				return true;
+			}
+		}
+		public bool Transfer(double amount, Account ToAccount) {
+			if (Withdraw(amount)) { //calls instance
+				ToAccount.Deposit(amount);
+				return true;
+			} else {
+				return false; // homework, withdraw succeeds and deposit fails
 			}
 		}
 		public double CheckBalance() {
