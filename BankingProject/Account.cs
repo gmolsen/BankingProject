@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Banking {
 	class Account {
 		//Properties goe shere
+		private static int nextAccountNumber = 96434;
+		private const int incrementAccountNumber = 74747;
 		private double Balance = 0;
 		private string Name = "Checking";
 		private int Number = 0;
@@ -18,8 +20,6 @@ namespace Banking {
 				return true;
 			}
 		}
-		 
-
 		public void Deposit(double amount) {
 			if (IsAmountInvalid(amount) == true) {
 				Console.WriteLine("The amount must be greater than zero.");
@@ -36,8 +36,29 @@ namespace Banking {
 		public double CheckBalance() {
 				return Balance;
 		}
+		public int getNumber() {
+			return Number;
+		}
 		public void SetName(string name) {
 			Name = name;
+		}
+
+		private void SetNumber (int number) {
+
+		}
+
+		public string GetName() {
+			return Name;
+		}
+		// default constructor
+		public Account() {
+			Number = nextAccountNumber;
+			nextAccountNumber += incrementAccountNumber;
+		}
+		public Account (string name) {
+			Name = name;
+			Number = nextAccountNumber++;
+			nextAccountNumber += incrementAccountNumber;
 		}
 	}
 }
