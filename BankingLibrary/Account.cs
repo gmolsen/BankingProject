@@ -106,5 +106,9 @@ namespace MaxTechnicalTraining {
 			Number = nextAccountNumber++;
 			nextAccountNumber += incrementAccountNumber;
 		}
+			public virtual string ToPrint() {
+			return $"{Number}:{Name}-{Balance}";
+		}
 	}
-}
+	}
+
