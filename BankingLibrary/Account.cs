@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MaxTechnicalTraining {
 	/// <summary>
-	///  The account class simulates an account at a bank.
+	///  The account class simulates an account at a bank. It is a base class
+	///  for the derived class Savings
 	/// </summary>
 	public class Account {
 		//Properties 
@@ -15,13 +16,15 @@ namespace MaxTechnicalTraining {
 		/// </summary>
 		private static int nextAccountNumber = 96434;
 		/// <summary>
-		/// number that account number increments by when creating new account
+		/// number that account number increments by when creating new account;
+		/// is constant because it should not be altered for the sake of continuity
 		/// </summary>
 		private const int incrementAccountNumber = 74747;
-		private double Balance = 0;
+		// is protected so that only classes that are derivitive of the Account class can use this variable
+		protected double Balance = 0;
 		private string Name = "Checking";
 		private int Number = 0;
-		// methods go here
+		// checks that amount being deposited is greater than 0
 		private bool IsAmountInvalid (double amount) {
 			if (amount > 0) {
 				return false ;
@@ -75,10 +78,6 @@ namespace MaxTechnicalTraining {
 				return false; // homework, withdraw succeeds and deposit fails
 			}
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		public double CheckBalance() {
 				return Balance;
 		}
@@ -106,8 +105,9 @@ namespace MaxTechnicalTraining {
 			Number = nextAccountNumber++;
 			nextAccountNumber += incrementAccountNumber;
 		}
+		// method that will be overridden by ToPrint() method inside Savings class
 			public virtual string ToPrint() {
-			return $"{Number}:{Name}-{Balance}";
+			return $"{Number}:{Name}::{Balance}";
 		}
 	}
 	}

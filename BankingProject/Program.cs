@@ -11,23 +11,24 @@ namespace Banking {
 
 		//check push
 		void Run() {
-			Account checking = new Account("My checking account.");
-			Account savings = new Savings("My savings account.");
-			checking.SetName("Checking 1");
-			checking.Deposit(200.00);
-			savings.Deposit(0.37);
-			Console.WriteLine($"Account Nbr:{checking.getNumber()}, Name: {checking.GetName()}, balance is {checking.CheckBalance()}");
-			Console.WriteLine($"Account Nbr:{savings.getNumber()}, Name: {savings.GetName()}, balance is {savings.CheckBalance()}");
+			Account checking = new Account();
+			checking.SetName("Checking");
+			checking.Deposit(300.00);
 
-			checking.Transfer(50.00, savings);
+			Savings savings = new Savings();
+			savings.SetName("Savings");
+			savings.Deposit(18000.00);
+			savings.PayMonthlyInterest();
 
-			Console.WriteLine($"Account Nbr:{checking.getNumber()}, Name: {checking.GetName()}, balance is {checking.CheckBalance()}");
-			Console.WriteLine($"Account Nbr:{savings.getNumber()}, Name: {savings.GetName()}, balance is {savings.CheckBalance()}");
+			//creates an array containing all properties of savings and checking accounts
+			// then prints properties of both accounts
+			List<Account> myAccounts = new List<Account>();
+			myAccounts.Add(savings);
+			myAccounts.Add(checking);
+			foreach (var account in myAccounts) {
+				Console.WriteLine(account.ToPrint());
+			}
 
-			savings.Transfer(50.00, checking);
-
-			Console.WriteLine($"Account Nbr:{checking.getNumber()}, Name: {checking.GetName()}, balance is {checking.CheckBalance()}");
-			Console.WriteLine($"Account Nbr:{savings.getNumber()}, Name: {savings.GetName()}, balance is {savings.CheckBalance()}");
 		}
 
 

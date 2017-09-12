@@ -3,24 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// using statement
 using MaxTechnicalTraining;
 
 namespace BankingProject {
-	public class Savings : Account {
-		private double IntRate;
-		public override string ToPrint() {
-			return base.ToPrint() + $"::{IntRate}";
+	/// <summary>
+	/// Savings account is a derived class of the base class Account
+	/// </summary>
+	public class Savings : Account { 
+		private double IntRate = 0.05;
+		private double amount = 0;
+		// method calculates monthly interest and deposits into account
+		public void PayMonthlyInterest() {
+			amount += IntRate * Balance;
+			Deposit(amount);
 		}
-		 public double PayMonthlyInterest() {
-			public bool Deposit(double amount) {
-				if (IsAmountInvalid(amount) == true) {
-					Console.WriteLine("The amount must be greater than zero.");
-					return false;
-				}
-				Balance += amount;
-				return true;
+		//overrides ToPrint() method from Account class
+		public override string ToPrint() {
+			return base.ToPrint() + $":::{IntRate}% interest";
+
+			//rest of Savings account properties / methods are called from Account base class
+		}
 
 			}
 		}
-	}
-}
+
