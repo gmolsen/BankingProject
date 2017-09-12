@@ -61,6 +61,7 @@ namespace MaxTechnicalTraining {
 				return false;
 			} else {
 				Balance -= amount;
+				Console.WriteLine($"You have withdrawn ${amount} from your {Name} account");
 				return true;
 			}
 		}
