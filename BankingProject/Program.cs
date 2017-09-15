@@ -34,7 +34,6 @@ namespace Banking {
 			}
 		}
 
-
 		static void Main(string[] args) {
 			new Program().Run();
 		}
